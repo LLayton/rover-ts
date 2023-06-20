@@ -62,7 +62,6 @@ export class Rover {
     
     switch (this.orientation.getValue()) {
       case 0:
-        
         if (this.planet.isOutmap(this.position.getX() + distance,this.position.getY())) {
           this.position.setX(this.position.getX() + distance);
         }else{
@@ -87,7 +86,6 @@ export class Rover {
           const distanceMur= this.planet.getSize().width-this.position.getX();
           //Si je part à 2 et que je recule de 5 alors la distance du point de l'autre côté est = à 3 donc 
           const newposition=this.planet.getSize().width-Math.abs(distanceMur-distance);
-          
           this.position.setX(newposition);
         }
         break;
@@ -98,12 +96,10 @@ export class Rover {
           const distanceMur= this.planet.getSize().height-this.position.getY();
           //Si je part à 2 et que je recule de 5 alors la distance du point de l'autre côté est = à 3 donc 
           const newposition=this.planet.getSize().height-Math.abs(distanceMur-distance);
-          
           this.position.setY(newposition);      
         }
         break;
     }
-    console.log(this.position,this.orientation.getValue())
 
   }
 }
