@@ -34,11 +34,28 @@ export class Rover {
   }
 
   public turn(degree: Orientation): void{
-    if (this.orientation.getValue()==170 && degree.getValue()>0) {
+    //360 étant un tour complet, il suffit d'enlever 360 quand on a fait un tour complet
+    if (this.orientation.getValue()+degree.getValue()>=360) {
+      this.orientation.setValue(this.orientation.getValue()+degree.getValue()-360);
+      return;
+    }
+    //quand je passe de 0 à -90 j'arrive en équivalent à 270 je doit donc ajouter 360
+    if (this.orientation.getValue()+degree.getValue()<0) {
+      this.orientation.setValue(this.orientation.getValue()+degree.getValue()+360);
+      return;
+    }
+    if (this.orientation.getValue()+degree.getValue()>0 && this.orientation.getValue()+degree.getValue()<360) {
+      this.orientation.setValue(this.orientation.getValue() + degree.getValue());
+      return;
+    }
+    /*else{
+      this.orientation.setValue(this.orientation.getValue() + degree.getValue());
+    }*/
+    /*if (this.orientation.getValue()==170 && degree.getValue()>0) {
       this.orientation.setValue(0);
     }else{
       this.orientation.setValue(this.orientation.getValue() + degree.getValue());
-    }
+    }*/
   }
 
   public move(distance : number): void{
