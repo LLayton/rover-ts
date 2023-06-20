@@ -18,33 +18,31 @@ export class Planet {
   public getSize(): { width: number; height: number } {
     return { width: this.width, height: this.height };
   }
-  isBarrierInFrontOf(position : Coordinates,Orientation:Orientation):C{
+  public isBarrierInFrontOf(position : Coordinates,Orientation:Orientation):Boolean{
     let isObstacleInXY : Boolean;
 
     //Permet de savoir si un obtacle est devant un élément ici un rover , mais sa pourrait être un alien ou je sais pas quoi
     switch (Orientation.getValue()) {
-      case 0:
-        
-        this.isObstacleInXY(position.getX()+1,position.getY());
+      case 0:     
+        isObstacleInXY=this.isBarrierXY(position.getX()+1,position.getY());
         break;
       case 90:
-        this.isObstacleInXY(position.getX(),position.getY()+1);
+        isObstacleInXY=this.isBarrierXY(position.getX(),position.getY()+1);
         break;     
       case 180:
-        this.isObstacleInXY(position.getX()-1,position.getY());
+        isObstacleInXY=this.isBarrierXY(position.getX()-1,position.getY());
 
         break;
       case 270:  
-        this.isObstacleInXY(position.getX()-1,position.getY());
-
+        isObstacleInXY=this.isBarrierXY(position.getX()-1,position.getY()-1);
         break;
-
     }
+    return isObstacleInXY;
   }
-  distanceBarrierFrom(){
+    distanceBarrierFrom(){
 
   }
-  isBarrierXY(x: number, y: number): Boolean{
+   private isBarrierXY(x: number, y: number): Boolean{
     this.barriers.forEach(barrier => {
       if(barrier.getPosition().getX()==x && barrier.getPosition().getY()==y){
         return true;
