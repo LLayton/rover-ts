@@ -42,7 +42,7 @@ export class Rover {
   }
 
   public move(distance : number): void{
-
+    
     switch (this.orientation.getValue()) {
       case 0:
         
