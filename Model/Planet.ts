@@ -39,16 +39,15 @@ export class Planet {
     }
     return isObstacleInXY;
   }
-    distanceBarrierFrom(){
-
-  }
-   private isBarrierXY(x: number, y: number): Boolean{
+ 
+   public  isBarrierXY(x: number, y: number): Boolean{
+    let founded : boolean=false;
     this.barriers.forEach(barrier => {
-      if(barrier.getPosition().getX()==x && barrier.getPosition().getY()==y){
-        return true;
+      if(barrier.getPosition().getX()===x && barrier.getPosition().getY()===y){
+        founded= true;
       }
     });
-    return false;
+    return founded;
   }
   isOutmap(x: number, y: number): boolean {
     let isValidPosition : boolean = true;
