@@ -1,8 +1,7 @@
-import { Orientation } from "../Model/Orientation";
-import { Coordinates } from "../Model/Coordinates";
-import { Planet } from "../Model/Planet";
-import { Rover } from "../Model/Rover";
-const each = require("jest-each").default;
+import { Orientation } from "../../Model/Orientation";
+import { Coordinates } from "../../Model/Coordinates";
+import { Planet } from "../../Model/Planet";
+import { Rover } from "../../Model/Rover";
 
 const pos = new Coordinates(7, 7);
 const posbarri = new Coordinates(1, 1);
